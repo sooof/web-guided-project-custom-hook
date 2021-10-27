@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import axios from 'axios';
-import data from "../data";
+
 import PokeDetails from './components/PokeDetails'
 import PokeList from './components/PokeList'
+import {getPokemon} from './services/PokeServices'
+
 
 
 function App() {
@@ -11,7 +13,8 @@ function App() {
   const [selectedPokemon, setSelectedPokemon] = useState({});
 
   useEffect(() => {
-    setPokemen(data);
+    setPokemen(getPokemon)
+    //setPokemen(data);
   }, []);
 
   const handlePoke = (id) => {
