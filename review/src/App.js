@@ -6,16 +6,14 @@ import PokeDetails from './components/PokeDetails'
 import PokeList from './components/PokeList'
 import {getPokemon} from './services/PokeServices'
 
-
-
-function App() {
-  const [pokemen, setPokemen] = useState([]);
-  const [selectedPokemon, setSelectedPokemon] = useState({});
-
+const usePokeState = () => {
   useEffect(() => {
     setPokemen(getPokemon)
     //setPokemen(data);
   }, []);
+
+  const [pokemen, setPokemen] = useState([]);
+  const [selectedPokemon, setSelectedPokemon] = useState({});
 
   const handlePoke = (id) => {
     axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
@@ -23,6 +21,18 @@ function App() {
         setSelectedPokemon(res.data);
       });
   };
+
+  return (
+    [handlePoke, pokemen, selectedPokemon]
+  );
+}
+
+function App() {
+  const [handlePoke, pokemen, selectedPokemon] = usePokeState();
+  
+
+
+
 
   return (
     <div className="App">
