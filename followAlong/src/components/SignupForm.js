@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
+import useForm from '../hooks/useForm';
+
 
 import Button from "../theme/Button";
 
@@ -20,36 +22,33 @@ const useStyles = makeStyles(theme => ({
     width: 200
   }
 }));
+
+
 const initialValues = {
   firstName:"", 
   lastName: "", 
   email:""
+  // In console 
+  // localStorage.setItem("todo", JSON.stringify({task: "adfas", id:1212}))
+  //localStorage.setItem("name", "Warren")
+  //localStorage.getItem("lastname")
+  //localStorage.removeItem('name')
+  
+  // firstName: localStorage.getItem('name'), 
+  // lastName: localStorage.getItem("lastname"), 
+  // email:""
 }
 
-const useForm = (initialValues) =>{
-  //1. gather all stateful logic
-  //2. return data need in component
-  //3. connect our hook to our component
-  // const [firstName, setFirstName] = useState(initialValues);
-  const [values, setValues] = useState(initialValues);
-  const handleChanges = e => {
-    // setValues(e.target.value);
-    // console.log("handleChange:  e.target.name=", e.target.name);
-    // console.log("handleChange:  e.target.value=", e.target.value);
-    setValues({
-      ...values,
-      [e.target.name]: e.target.value
-    });
-  };
-  const clearForm = e => {
-    e.preventDefault();
-    // setValues("");
-    setValues(initialValues);
-  };
 
-  return ([values, handleChanges, clearForm]);
+const useLocalStorage = (key, initialValue) => {
+  //1. When we initialize state, see if a value exists inside of localStorage.
+  //2. if a value exists in localStorage, set state to that value.
+  //3. if a value does not exist in localStorage, set state to initialValue and set localStorage to initialValue
+  //4. Any time we save to state, save to localStorage.
+  // const [value, setValue] = useState( () => {
+  //   return value;
+  // })
 }
- 
 
 export default function SignupForm() {
   const classes = useStyles();
@@ -58,9 +57,10 @@ export default function SignupForm() {
   // const [lastName, handleChanges, clearForm] = useForm("")
   
    const [values, handleChanges, clearForm] = useForm(initialValues)
+   const [name, setName] = useState( "Warren");
 
-   console.log("SignupForm", values);
-   console.log("SignupForm", values.firstName);
+  //  console.log("SignupForm", values);
+  //  console.log("SignupForm", values.firstName);
 
   const handleSubmit = e => {
     e.preventDefault();
@@ -71,6 +71,10 @@ export default function SignupForm() {
 
   return (
     <div p={2} className="form">
+            <h3>{name}</h3>
+      <button onClick={()=> {
+        setName("AllisChrison");
+      }}>Change Name</button>
       <form onSubmit={handleSubmit}>
         <fieldset>
           <legend>Add New Client</legend>
