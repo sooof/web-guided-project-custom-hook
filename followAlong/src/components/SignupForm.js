@@ -20,6 +20,11 @@ const useStyles = makeStyles(theme => ({
     width: 200
   }
 }));
+const initialValues = {
+  firstName:"", 
+  lastName: "", 
+  email:""
+}
 
 const useForm = (initialValues) =>{
   //1. gather all stateful logic
@@ -28,7 +33,13 @@ const useForm = (initialValues) =>{
   // const [firstName, setFirstName] = useState(initialValues);
   const [values, setValues] = useState(initialValues);
   const handleChanges = e => {
-    setValues(e.target.value);
+    // setValues(e.target.value);
+    // console.log("handleChange:  e.target.name=", e.target.name);
+    // console.log("handleChange:  e.target.value=", e.target.value);
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    });
   };
   const clearForm = e => {
     e.preventDefault();
@@ -45,16 +56,16 @@ export default function SignupForm() {
   // const [firstName, handleChanges, clearForm] = useForm("")
   // const [lastName, handleChanges, clearForm] = useForm("")
   
-   const [values, handleChanges, clearForm] = useForm({firstName:"Warren", lastName: "Longmire", email:"kgkjhvhj"})
+   const [values, handleChanges, clearForm] = useForm(initialValues)
 
    console.log("SignupForm", values);
    console.log("SignupForm", values.firstName);
 
   const handleSubmit = e => {
     e.preventDefault();
-   
-    alert(`${values.firstName}, ${values.lastName}`);
+    alert(`${values.firstName}, ${values.lastName}, ${values.email}`);
   };
+  console.log("SignupForm == ", values);
 
 
   return (
