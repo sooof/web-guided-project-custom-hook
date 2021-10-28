@@ -21,33 +21,39 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const useForm = () =>{
+const useForm = (initialValues) =>{
   //1. gather all stateful logic
   //2. return data need in component
   //3. connect our hook to our component
-  const [firstName, setFirstName] = useState();
+  // const [firstName, setFirstName] = useState(initialValues);
+  const [values, setValues] = useState(initialValues);
   const handleChanges = e => {
-    setFirstName(e.target.value);
+    setValues(e.target.value);
   };
   const clearForm = e => {
     e.preventDefault();
-    setFirstName("");
+    setValues("");
   };
 
-  return ([firstName, handleChanges, clearForm]);
+  return ([values, handleChanges, clearForm]);
 }
  
 
 export default function SignupForm() {
   const classes = useStyles();
  
-  const [firstName, handleChanges, clearForm] = useForm()
+  // const [firstName, handleChanges, clearForm] = useForm("")
+  // const [lastName, handleChanges, clearForm] = useForm("")
+  
+   const [values, handleChanges, clearForm] = useForm({firstName:"Warren", lastName: "Longmire", email:"kgkjhvhj"})
 
-
+   console.log("SignupForm", values);
+   console.log("SignupForm", values.firstName);
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert(firstName);
+   
+    alert(`${values.firstName}, ${values.lastName}`);
   };
 
 
@@ -61,7 +67,27 @@ export default function SignupForm() {
             label="First Name"
             className={classes.textField}
             name="firstName"
-            value={firstName}
+            value={values.firstName}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-name"
+            label="Last Name"
+            className={classes.textField}
+            name="lastName"
+            value={values.lastName}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+          <TextField
+            id="outlined-name"
+            label="Email"
+            className={classes.textField}
+            name="email"
+            value={values.email}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
