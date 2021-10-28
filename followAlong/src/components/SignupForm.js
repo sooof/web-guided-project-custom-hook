@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
 import useForm from '../hooks/useForm';
+import useLocalStorage from '../hooks/useLocalStorage';
 
 
 import Button from "../theme/Button";
@@ -40,16 +41,6 @@ const initialValues = {
 }
 
 
-const useLocalStorage = (key, initialValue) => {
-  //1. When we initialize state, see if a value exists inside of localStorage.
-  //2. if a value exists in localStorage, set state to that value.
-  //3. if a value does not exist in localStorage, set state to initialValue and set localStorage to initialValue
-  //4. Any time we save to state, save to localStorage.
-  const [value, setValue] = useState( () => {
-    return initialValue;
-  });
-  return [value, setValue]
-}
 
 export default function SignupForm() {
   const classes = useStyles();
