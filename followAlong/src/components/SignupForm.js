@@ -43,7 +43,8 @@ const useForm = (initialValues) =>{
   };
   const clearForm = e => {
     e.preventDefault();
-    setValues("");
+    // setValues("");
+    setValues(initialValues);
   };
 
   return ([values, handleChanges, clearForm]);
