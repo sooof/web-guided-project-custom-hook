@@ -45,9 +45,10 @@ const useLocalStorage = (key, initialValue) => {
   //2. if a value exists in localStorage, set state to that value.
   //3. if a value does not exist in localStorage, set state to initialValue and set localStorage to initialValue
   //4. Any time we save to state, save to localStorage.
-  // const [value, setValue] = useState( () => {
-  //   return value;
-  // })
+  const [value, setValue] = useState( () => {
+    return value;
+  });
+  return [value, setValue]
 }
 
 export default function SignupForm() {
@@ -57,7 +58,8 @@ export default function SignupForm() {
   // const [lastName, handleChanges, clearForm] = useForm("")
   
    const [values, handleChanges, clearForm] = useForm(initialValues)
-   const [name, setName] = useState( "Warren");
+   //const [name, setName] = useState( "Warren");
+   const [name, setName] = useLocalStorage( "Warren");
 
   //  console.log("SignupForm", values);
   //  console.log("SignupForm", values.firstName);
