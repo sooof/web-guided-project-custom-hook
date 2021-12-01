@@ -21,23 +21,50 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-export default function SignupForm() {
-  const classes = useStyles();
-  const [firstName, setFirstName] = useState("");
+//Custom hook for a form:
+//1. make a function called useForm.
+//2. identify and move into useForm ALL stateful logic.
+//3. return all values needed in SignupForm from useForm.
+//4. Replace useState statement with useForm
+const useForm = (initialState) => {
+  const [values, setValues] = useState(initialState);
 
   const handleChanges = e => {
-    setFirstName(e.target.value);
+    setValues(e.target.value);
   };
+
+  const clearForm = e => {
+    e.preventDefault();
+    setValues("");
+  };
+
+  return [values, clearForm, handleChanges];
+}
+
+export default function SignupForm() {
+  const classes = useStyles();
+  // const [firstName, setFirstName] = useState("");
+  const [values, clearForm, handleChanges] = useForm({
+    firstName:"allison", 
+    lastName:"longmire",
+    email: "w@gmail.com"
+  });
+
+  console.log(values);
+
+  // const handleChanges = e => {
+  //   setFirstName(e.target.value);
+  // };
 
   const handleSubmit = e => {
     e.preventDefault();
     alert(firstName);
   };
 
-  const clearForm = e => {
-    e.preventDefault();
-    setFirstName("");
-  };
+  // const clearForm = e => {
+  //   e.preventDefault();
+  //   setFirstName("");
+  // };
 
   return (
     <div p={2} className="form">
