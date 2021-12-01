@@ -58,7 +58,8 @@ export default function SignupForm() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    alert(firstName);
+    // alert(firstName);
+    alert(`${values.firstName} ${values.lastName} : ${values.email}`);
   };
 
   // const clearForm = e => {
@@ -76,7 +77,7 @@ export default function SignupForm() {
             label="First Name"
             className={classes.textField}
             name="firstName"
-            // value={values.firstName}
+            value={values.firstName}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
@@ -87,7 +88,7 @@ export default function SignupForm() {
             label="Last Name"
             className={classes.textField}
             name="lastName"
-            // value={values.lastName}
+            value={values.lastName}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
@@ -98,7 +99,7 @@ export default function SignupForm() {
             label="Email"
             className={classes.textField}
             name="email"
-            // value={values.email}
+            value={values.email}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
