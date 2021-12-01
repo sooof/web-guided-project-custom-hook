@@ -21,6 +21,11 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const initialState = {
+  firstName:"", 
+  lastName:"",
+  email: ""
+};
 //Custom hook for a form:
 //1. make a function called useForm.
 //2. identify and move into useForm ALL stateful logic.
@@ -30,12 +35,17 @@ const useForm = (initialState) => {
   const [values, setValues] = useState(initialState);
 
   const handleChanges = e => {
-    setValues(e.target.value);
+    // setValues(e.target.value);
+    setValues({
+      ...values,
+      [e.target.name]: e.target.value
+    })
   };
 
   const clearForm = e => {
     e.preventDefault();
-    setValues("");
+    // setValues("");
+    setValues(initialState);
   };
 
   return [values, clearForm, handleChanges];
@@ -44,12 +54,13 @@ const useForm = (initialState) => {
 export default function SignupForm() {
   const classes = useStyles();
   // const [firstName, setFirstName] = useState("");
-  const [values, clearForm, handleChanges] = useForm({
-    firstName:"allison", 
-    lastName:"longmire",
-    email: "w@gmail.com"
-  });
-
+  // const [values, clearForm, handleChanges] = useForm({
+  //   firstName:"allison", 
+  //   lastName:"longmire",
+  //   email: "w@gmail.com"
+  // });
+  const [values, clearForm, handleChanges] = useForm(initialState);
+  
   console.log(values);
 
   // const handleChanges = e => {
