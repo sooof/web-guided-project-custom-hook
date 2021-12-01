@@ -3,6 +3,7 @@ import "./styles.scss";
 import axios from 'axios';
 import data from "../data";
 import SelectedPokemon from './components/SelectedPokemon';
+import PokeList from './components/PokeList';
 
 function App() {
   const [pokemen, setPokemen] = useState([]);
@@ -43,7 +44,7 @@ function App() {
         )}
       </div> */}
        <SelectedPokemon selectedPokemon={selectedPokemon}/>
-      <div id="pokeList">
+      {/* <div id="pokeList">
         {pokemen.map((pokemon) => (
           <div
             onClick={() => handlePoke(pokemon.id)}
@@ -58,7 +59,8 @@ function App() {
             </div>
           </div>
         ))}
-      </div>
+      </div> */}
+      <PokeList pokemen={pokemen} handlePoke={handlePoke}/>
     </div>
   );
 }
