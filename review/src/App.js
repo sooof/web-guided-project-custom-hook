@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "./styles.scss";
 import axios from 'axios';
 import data from "../data";
+import SelectedPokemon from './components/SelectedPokemon';
 
 function App() {
   const [pokemen, setPokemen] = useState([]);
@@ -20,7 +21,7 @@ function App() {
 
   return (
     <div className="App">
-      <div id="selectedDiv">
+      {/* <div id="selectedDiv">
         <h2>Selected Pokemon: {selectedPokemon.name || "none"}</h2>
         {selectedPokemon.name && (
           <div>
@@ -40,7 +41,8 @@ function App() {
             </ul>
           </div>
         )}
-      </div>
+      </div> */}
+       <SelectedPokemon selectedPokemon={selectedPokemon}/>
       <div id="pokeList">
         {pokemen.map((pokemon) => (
           <div
