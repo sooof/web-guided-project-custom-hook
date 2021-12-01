@@ -49,7 +49,29 @@ export default function SignupForm() {
             label="First Name"
             className={classes.textField}
             name="firstName"
-            value={firstName}
+            // value={values.firstName}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+
+          <TextField
+            id="outlined-name"
+            label="Last Name"
+            className={classes.textField}
+            name="lastName"
+            // value={values.lastName}
+            onChange={handleChanges}
+            margin="normal"
+            variant="outlined"
+          />
+
+          <TextField
+            id="outlined-name"
+            label="Email"
+            className={classes.textField}
+            name="email"
+            // value={values.email}
             onChange={handleChanges}
             margin="normal"
             variant="outlined"
