@@ -11,6 +11,16 @@ console.log(first, second, third)
 console.log(rest)
 // console.log(first())
 
+// object 
+const obj = {
+  firstname: "warren",
+  last: "Longmire",
+  job: "teacher",
+  age: 33
+}
+const {firstname, last, age, ...other} = obj
+console.log(firstname, last, age)
+console.log(other)
 function App() {
   return (
     <div className="App">
