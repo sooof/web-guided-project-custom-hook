@@ -21,10 +21,22 @@ const obj = {
 const {firstname: theFirstOne, last, age, ...other} = obj
 console.log(theFirstOne, last, age)
 console.log(other)
+// React
+const Person = (props) => {
+
+  return(
+    <div>
+      <h2>{props.firstname}</h2>
+      <h2>{props.last}</h2>
+      <h2>{props.age}</h2>
+    </div>
+  )
+}
 function App() {
   return (
     <div className="App">
       <h1>Hello CodeSandBox</h1>
+      <Person firstname="Warren" last="Longmire" age={33}/>
       <p>Start editing to see some magic happen!</p>
     </div>
   );
