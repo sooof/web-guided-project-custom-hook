@@ -18,8 +18,8 @@ const obj = {
   job: "teacher",
   age: 33
 }
-const {firstname, last, age, ...other} = obj
-console.log(firstname, last, age)
+const {firstname: theFirstOne, last, age, ...other} = obj
+console.log(theFirstOne, last, age)
 console.log(other)
 function App() {
   return (
