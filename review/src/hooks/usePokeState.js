@@ -4,6 +4,18 @@ import axios from 'axios';
 
 const getPokemon =(id) =>{
   return   axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
+  .then(resp => {
+    console.log("1", resp.data)
+    return resp.data
+  })
+  .then(data => {
+    console.log("2 ", data.forms)
+    return data.forms
+  })
+  .then(item =>{
+    console.log("3 ", item)
+    return item
+  })
 }
 const usePokeState = () => {
     const [pokemen, setPokemen] = useState([]);
@@ -14,11 +26,11 @@ const usePokeState = () => {
     }, []);
   
     const handlePoke = (id) => {
-      console.log(getPokemon(id))
+      // console.log(getPokemon(id))
       getPokemon(id)
         .then((res) => {
-          console.log(res)
-          setSelectedPokemon(res.data);
+          console.log("h",res)
+          // setSelectedPokemon(res);
         });
       // axios.get(`https://pokeapi.co/api/v2/pokemon/${id}/`)
       //   .then((res) => {
