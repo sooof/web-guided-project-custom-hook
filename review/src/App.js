@@ -28,15 +28,22 @@ const Person = (props) => {
     <div>
       <h2>{props.firstname}</h2>
       <h2>{props.last}</h2>
-      <h2>{props.age}</h2>
+      <h2>test {age}</h2>
     </div>
   )
 }
 function App() {
+  const attributes = {
+    firstname: "warren",
+    last: "Longmire",
+    job: "teacher",
+    age: 33 
+  }
   return (
     <div className="App">
       <h1>Hello CodeSandBox</h1>
-      <Person firstname="Warren" last="Longmire" age={33}/>
+      {/* <Person firstname="Warren" last="Longmire" age={33}/> */}
+      <Person {...attributes}/>
       <p>Start editing to see some magic happen!</p>
     </div>
   );
