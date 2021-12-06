@@ -4,11 +4,12 @@ import "./styles.scss";
 const func = () => {
   return "here";
 }
-const array = [func,2,3,4,5]
-const [first, second, third] = array;
+// const array = [func,2,3,4,5]
+const array = [1,2,3,4,5]
+const [first, second, third, ...rest] = array;
 console.log(first, second, third)
-
-console.log(first())
+console.log(rest)
+// console.log(first())
 
 function App() {
   return (
